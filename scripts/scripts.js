@@ -9,7 +9,7 @@ const scriptsData = [
         executors: "false",
         vhub: "true",
         keysystem: "false",
-        script: "loadstring(game:HttpGet('https://raw.githubusercontent.com/AuriXDev/VHubs/refs/heads/main/games/SurvivarTheKiller.lua'))()",
+        script: "loadstring(game:HttpGet('https://raw.githubusercontent.com/VuanHubs/VHubs/refs/heads/main/VHubV2.lua'))()",
         url: ""
     },
     {
@@ -87,7 +87,7 @@ const scriptsData = [
         executors: "false",
         vhub: "true",
         keysystem: "false",
-        script: "",
+        script: "loadstring(game:HttpGet('https://raw.githubusercontent.com/VuanHubs/VHubs/refs/heads/main/games/fnaf%3Aen.lua'))()",
         url: ""
     },
     {
