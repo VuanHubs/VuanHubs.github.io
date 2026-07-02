@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <link rel="shortcut icon" href="../icon.png" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VuaN Scripts | Executors</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #0f0f0f;
+            --card-bg: #141414;
+            --input-bg: #1e1e1e;
+            --text-main: #ffffff;
+            --text-sub: #a0a0a0;
+            
+            --accent-color: rgb(200, 60, 60);
+            --accent-hover: rgb(230, 80, 80);
+            --border-color: rgba(200, 60, 60, 0.2);
+            
+            --executor-border: #ff8fa3;
+            --executor-glow: rgba(255, 143, 163, 0.15);
+            --executor-badge-bg: rgba(255, 143, 163, 0.15);
+            --executor-badge-text: #ffb3c1;
+            --executor-btn-bg: rgba(255, 143, 163, 0.1);
+            --executor-btn-hover: #ff8fa3;
+
+            --vhub-bg: #8b0000;
+            --vhub-text: #ffffff;
+            --keysystem-bg: #0a4b8a;
+            --keysystem-text: #ffffff;
+
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .badge-android {
+            background: #3ddc84;
+            color: #000000;
+            border: 1px solid #2ea86b;
+        }
+
+        .badge-android svg {
+            fill: #000000;
+        }
+
+        .top-bar {
+            display: flex;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto 30px auto;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-sub);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: 0.3s;
+            cursor: pointer;
+            padding: 10px 15px;
+            border-radius: 8px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            white-space: nowrap;
+        }
+
+        .back-btn:hover {
+            color: var(--text-main);
+            border-color: var(--accent-hover);
+        }
+
+        .page-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-left: 10px;
+        }
+
+        .page-title span {
+            color: var(--executor-badge-text);
+        }
+
+        .search-container {
+            flex-grow: 1;
+            max-width: 500px;
+            position: relative;
+            margin-left: auto;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 20px 12px 45px;
+            background: var(--input-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            color: white;
+            font-size: 15px;
+            font-family: inherit;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 2px rgba(200, 60, 60, 0.1);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            fill: var(--text-sub);
+            pointer-events: none;
+        }
+
+        .stats-bar {
+            max-width: 1200px;
+            margin: 0 auto 20px auto;
+            padding: 15px 20px;
+            background: var(--card-bg);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .stats-bar .count {
+            color: var(--text-sub);
+            font-size: 14px;
+        }
+
+        .stats-bar .count strong {
+            color: var(--executor-badge-text);
+            font-size: 18px;
+        }
+
+        .filter-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .filter-tag {
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            background: var(--input-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-sub);
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .filter-tag:hover {
+            border-color: var(--executor-border);
+            color: var(--text-main);
+        }
+
+        .filter-tag.active {
+            background: var(--executor-badge-bg);
+            border-color: var(--executor-border);
+            color: var(--executor-badge-text);
+        }
+
+        .scripts-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .script-card {
+            background: var(--card-bg);
+            border: 5px solid var(--executor-border);
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px var(--executor-glow);
+        }
+
+        .script-card:hover {
+            border-color: #ffc2d1;
+            box-shadow: 0 0 25px rgba(255, 143, 163, 0.25);
+            transform: translateY(-4px);
+        }
+
+        .card-image-wrapper {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background: #0a0a0a;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .script-card:hover .card-image {
+            transform: scale(1.05);
+        }
+
+        .card-content {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            flex-grow: 1;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 1.3;
+            color: var(--text-main);
+        }
+
+        .badges {
+            display: flex;
+            gap: 6px;
+            flex-shrink: 0;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        .badge {
+            font-size: 11px;
+            font-weight: 700;
+            padding: 5px 8px;
+            border-radius: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .badge svg {
+            width: 12px;
+            height: 12px;
+            fill: currentColor;
+        }
+
+        .badge-executor {
+            background: var(--executor-badge-bg);
+            color: var(--executor-badge-text);
+            border: 1px solid rgba(255, 143, 163, 0.4);
+        }
+
+        .badge-verified {
+            background: #ffffff;
+            color: #000000;
+            border: 1px solid #ffffff;
+        }
+
+        .badge-vhub {
+            background: var(--vhub-bg);
+            color: var(--vhub-text);
+            border: 1px solid #b30000;
+        }
+
+        .badge-keysystem {
+            background: var(--keysystem-bg);
+            color: var(--keysystem-text);
+            border: 1px solid #1a73e8;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            color: var(--text-sub);
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+
+        .card-footer {
+            margin-top: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .card-date {
+            font-size: 13px;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .btn-action {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            font-family: inherit;
+            text-decoration: none;
+        }
+
+        .btn-action svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+            transition: 0.2s;
+        }
+
+        .btn-url {
+            background: var(--executor-btn-bg);
+            border: 1px solid rgba(255, 143, 163, 0.4);
+            color: var(--executor-badge-text);
+        }
+
+        .btn-url:hover {
+            background: var(--executor-btn-hover);
+            border-color: var(--executor-btn-hover);
+            color: #fff;
+            box-shadow: 0 0 15px rgba(255, 143, 163, 0.3);
+        }
+
+        @media (max-width: 900px) {
+            .scripts-grid {
+                grid-template-columns: 1fr;
+            }
+            .top-bar {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .search-container {
+                max-width: 100%;
+                order: 3;
+            }
+            .back-btn {
+                justify-content: center;
+            }
+            .stats-bar {
+                flex-direction: column;
+                align-items: stretch;
+                text-align: center;
+            }
+            .filter-tags {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="../index.html" class="back-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            Back
+        </a>
+        <div class="page-title"><span>Executors</span></div>
+        
+        <div class="search-container">
+            <svg class="search-icon" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+            <input type="text" id="searchInput" class="search-input" placeholder="Search executors...">
+        </div>
+    </div>
+
+    <div class="stats-bar" id="statsBar">
+        <div class="count">Found <strong id="executorCount">0</strong> executors</div>
+        <div class="filter-tags">
+            <span class="filter-tag active" data-filter="all">All</span>
+            <span class="filter-tag" data-filter="verified">Verified</span>
+            <span class="filter-tag" data-filter="free">Free</span>
+            <span class="filter-tag" data-filter="paid">Paid</span>
+            <span class="filter-tag" data-filter="android">Android</span>
+        </div>
+    </div>
+
+    <div class="scripts-grid" id="executorsContainer"></div>
+
+    <script>
+        const executorsData = [
+            {
+                name: "Xeno",
+                image: "../scripts/executors/xeno.png",
+                about: "Xeno - most popular free and keyless executor",
+                data: "Undetect",
+                verificate: "true",
+                free: "true",
+                paid: "false",
+                vhub: "false",
+                keysystem: "false",
+                android: "false",
+                url: "https://www.xeno.now/download"
+            },
+            {
+                name: "Delta",
+                image: "../scripts/executors/delta.png",
+                about: "Delta - powerful and popular executor for android",
+                data: "Undetect",
+                verificate: "true",
+                free: "false",
+                paid: "false",
+                vhub: "false",
+                keysystem: "true",
+                android: "true",
+                url: "https://discord.gg/deltax"
+            },
+            {
+                name: "Wave",
+                image: "../scripts/executors/wave.png",
+                about: "Wave - best paid executor",
+                data: "Undetect",
+                verificate: "true",
+                free: "false",
+                paid: "true",
+                vhub: "false",
+                keysystem: "false",
+                android: "false",
+                url: "https://getwave.gg"
+            },
+            {
+                name: "Solara",
+                image: "../scripts/executors/solara.png",
+                about: "Solara - free executor but slow updates",
+                data: "Undetect",
+                verificate: "false",
+                free: "true",
+                paid: "false",
+                vhub: "false",
+                keysystem: "false",
+                android: "false",
+                url: "https://solara.gg"
+            },
+            {
+                name: "Madium",
+                image: "../scripts/executors/madium.png",
+                about: "New good and powerful executor",
+                data: "Undetect",
+                verificate: "false",
+                free: "true",
+                paid: "false",
+                vhub: "false",
+                keysystem: "false",
+                android: "false",
+                url: "https://getmadium.net"
+            },
+            {
+                name: "Codex",
+                image: "../scripts/executors/codex.png",
+                about: "Codex - simple executor for android",
+                data: "Undetect",
+                verificate: "false",
+                free: "false",
+                paid: "false",
+                vhub: "false",
+                keysystem: "true",
+                android: "true",
+                url: "https://discord.gg/codexlol"
+            },
+            {
+                name: "ScriptWare",
+                image: "../scripts/executors/1.png",
+                about: "ScriptWare - powerful paid executor with great stability",
+                data: "Undetect",
+                verificate: "false",
+                free: "false",
+                paid: "true",
+                vhub: "false",
+                keysystem: "false",
+                android: "false",
+                url: "https://script-ware.com"
+            },
+            {
+                name: "Krnl",
+                image: "../scripts/executors/1.png",
+                about: "Krnl - legendary free executor",
+                data: "Undetect",
+                verificate: "false",
+                free: "true",
+                paid: "false",
+                vhub: "false",
+                keysystem: "false",
+                android: "true",
+                url: "https://krnl.place"
+            }
+        ];
+
+        const container = document.getElementById('executorsContainer');
+        const searchInput = document.getElementById('searchInput');
+        const executorCount = document.getElementById('executorCount');
+        const filterTags = document.querySelectorAll('.filter-tag');
+        let currentFilter = 'all';
+
+        function renderExecutors(filterText = '', filterType = 'all') {
+            container.innerHTML = '';
+            
+            const filteredData = executorsData.filter(executor => {
+                const nameMatch = executor.name.toLowerCase().includes(filterText.toLowerCase());
+                const aboutMatch = executor.about.toLowerCase().includes(filterText.toLowerCase());
+                
+                // В функции renderExecutors, в блоке filterMatch
+                let filterMatch = true;
+                if (filterType === 'verified') {
+                    filterMatch = executor.verificate === "true";
+                } else if (filterType === 'free') {
+                    filterMatch = executor.free === "true";
+                } else if (filterType === 'paid') {
+                    filterMatch = executor.paid === "true";
+                } else if (filterType === 'android') {
+                    filterMatch = executor.android === "true";
+                }
+                
+                return (nameMatch || aboutMatch) && filterMatch;
+            });
+
+            executorCount.textContent = filteredData.length;
+
+            if (filteredData.length === 0) {
+                container.innerHTML = '<div style="grid-column: 1/-1; text-align: center; color: #666; padding: 40px;">No executors found matching your search.</div>';
+                return;
+            }
+
+            filteredData.forEach((executor, index) => {
+                const card = document.createElement('div');
+                card.className = 'script-card';
+                
+                let badgesHtml = `
+                    <span class="badge badge-executor">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+                        Executor
+                    </span>
+                `;
+                
+                if (executor.verificate === "true") {
+                    badgesHtml += `
+                        <span class="badge badge-verified">
+                            <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                        </span>
+                    `;
+                }
+
+                if (executor.free === "true") {
+                    badgesHtml += `
+                        <span class="badge badge-verified" style="background: #2ecc71; color: #000; border-color: #2ecc71;">FREE</span>
+                    `;
+                }
+
+                if (executor.paid === "true") {
+                    badgesHtml += `
+                        <span class="badge badge-verified" style="background: #f1c40f; color: #000; border-color: #f1c40f;">PAID</span>
+                    `;
+                }
+
+                if (executor.vhub === "true") {
+                    badgesHtml += `
+                        <span class="badge badge-vhub">VHUB</span>
+                    `;
+                }
+
+                if (executor.keysystem === "true") {
+                    badgesHtml += `
+                        <span class="badge badge-keysystem">
+                            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
+                            KEY SYSTEM
+                        </span>
+                    `;
+                }
+
+                // Внутри функции renderExecutors, после других бейджей
+                if (executor.android === "true") {
+                    badgesHtml += `<span class="badge badge-android">ANDROID</span>`;
+                }
+
+                const link = executor.url || '#';
+                const actionButtonHtml = `
+                    <a href="${link}" target="_blank" class="btn-action btn-url">
+                        <svg viewBox="0 0 24 24"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/></svg>
+                        Download
+                    </a>
+                `;
+
+                card.innerHTML = `
+                    <div class="card-image-wrapper">
+                        <img src="${executor.image}" class="card-image" alt="${executor.name}" onerror="this.style.display='none'">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-header">
+                            <div class="card-title">${executor.name}</div>
+                            <div class="badges">
+                                ${badgesHtml}
+                            </div>
+                        </div>
+                        <div class="card-desc">${executor.about}</div>
+                        
+                        <div class="card-footer">
+                            <div class="card-date">${executor.data}</div>
+                            ${actionButtonHtml}
+                        </div>
+                    </div>
+                `;
+                
+                container.appendChild(card);
+            });
+        }
+
+        // Search handler
+        searchInput.addEventListener('input', (e) => {
+            renderExecutors(e.target.value, currentFilter);
+        });
+
+        // Filter tags handler
+        filterTags.forEach(tag => {
+            tag.addEventListener('click', () => {
+                filterTags.forEach(t => t.classList.remove('active'));
+                tag.classList.add('active');
+                currentFilter = tag.dataset.filter;
+                renderExecutors(searchInput.value, currentFilter);
+            });
+        });
+
+        // Initial render
+        renderExecutors('', 'all');
+    </script>
+</body>
+</html>
