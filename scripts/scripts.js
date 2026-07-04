@@ -1,7 +1,7 @@
 const scriptsData = [
     {
         name: "VHub V2",
-        image: "VHub2/1.png",
+        image: "assets/VHub2/1.png",
         about: "Script ESP, WORLD-HACK, PLAYER-HACK, SUMMON, FUN",
         data: "19.06.2026",
         universal: "true",
@@ -9,12 +9,13 @@ const scriptsData = [
         executors: "false",
         vhub: "true",
         keysystem: "false",
+        ads: "false",
         script: "loadstring(game:HttpGet('https://raw.githubusercontent.com/VuanHubs/VHubs/refs/heads/main/VHubV2.lua'))()",
         url: ""
     },
     {
         name: "Infinite Yield",
-        image: "IY/1.png",
+        image: "assets/IY/1.png",
         about: "Admin Tools for roblox",
         data: "06.05.2022",
         universal: "true",
@@ -22,12 +23,13 @@ const scriptsData = [
         executors: "false",
         vhub: "false",
         keysystem: "false",
+        ads: "false",
         script: "loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()",
         url: ""
     },
     {
         name: "VSTK V2",
-        image: "VSTKv2/1.png",
+        image: "assets/VSTK/2.png",
         about: "Script for Survival the Killer - ESP, REVIVE, WORLD-HACK, ANTI TRAP",
         data: "27.06.2026",
         universal: "false",
@@ -35,12 +37,27 @@ const scriptsData = [
         executors: "false",
         vhub: "true",
         keysystem: "false",
+        ads: "false",
         script: "loadstring(game:HttpGet('https://raw.githubusercontent.com/AuriXDev/VHubs/refs/heads/main/games/SurvivarTheKiller.lua'))()",
         url: ""
     },
     {
+        name: "Discord SACR1F1C3",
+        image: "assets/ads/1.png",
+        about: "SACR1F1C3 Scripts - join community for more",
+        data: "cool integration",
+        universal: "false",
+        verificate: "false",
+        executors: "false",
+        vhub: "false",
+        keysystem: "false",
+        ads: "true",
+        script: "https://discord.gg/9smM76eSK",
+        url: "https://discord.gg/9smM76eSK"
+    },
+    {
         name: "MM2 | Vertex",
-        image: "MM2vertex/1.png",
+        image: "assets/MM2vertex/1.png",
         about: "Powerful script for Myrder Mystery 2",
         data: "02.07.2026",
         universal: "false",
@@ -48,6 +65,7 @@ const scriptsData = [
         executors: "false",
         vhub: "false",
         keysystem: "false",
+        ads: "false",
         script: "loadstring(game:HttpGet('https://raw.githubusercontent.com/yoursvexyyy/vexx/main/loader'))()",
         url: ""
     },
@@ -61,12 +79,13 @@ const scriptsData = [
         executors: "true",
         vhub: "false",
         keysystem: "false",
+        ads: "false",
         script: "",
         url: "https://www.xeno.now/download"
     },
     {
         name: "AimBot by v3lnx",
-        image: "AIMbyV3LNX/1.png",
+        image: "assets/AIMbyV3LNX/1.png",
         about: "Universal AIM assist with ESP and CFG",
         data: "02.07.2026",
         universal: "true",
@@ -74,25 +93,27 @@ const scriptsData = [
         executors: "false",
         vhub: "false",
         keysystem: "false",
+        ads: "false",
         script: "loadstring(game:HttpGet('https://raw.githubusercontent.com/zzsiren/Megaskid.wtf/refs/heads/main/script.lua', true))()",
         url: ""
     },
     {
         name: "FNAF: Eternal Night",
-        image: "FNAF-EN/1.png",
-        about: "Script for FNAF: External Night - ESP, TELEPORT and MORE features",
+        image: "assets/FNAF-EN/1.png",
+        about: "Script for FNAF: Eternal Night - ESP, TELEPORT and MORE features",
         data: "04.07.2026",
         universal: "false",
         verificate: "true",
         executors: "false",
         vhub: "true",
         keysystem: "false",
+        ads: "false",
         script: "loadstring(game:HttpGet('https://raw.githubusercontent.com/VuanHubs/VHubs/refs/heads/main/games/fnaf%3Aen.lua'))()",
         url: ""
     },
     {
         name: "VSTK V1.4",
-        image: "VSTKv1.4/1.png",
+        image: "assets/VSTK/1.png",
         about: "Script for Survival the Killer (version 1.4) - ESP, REVIVE, WORLD-HACK",
         data: "19.06.2026",
         universal: "false",
@@ -100,6 +121,7 @@ const scriptsData = [
         executors: "false",
         vhub: "true",
         keysystem: "false",
+        ads: "false",
         script: "loadstring(game:HttpGet('https://raw.githubusercontent.com/AuriXDev/VHubs/refs/heads/main/old/STK_V1_4.lua'))()",
         url: ""
     },
@@ -113,12 +135,13 @@ const scriptsData = [
         executors: "true",
         vhub: "false",
         keysystem: "true",
+        ads: "false",
         script: "",
         url: "https://getwave.gg"
     },
     {
         name: "Fly | By me_ozonYT",
-        image: "fly/1.jpg",
+        image: "assets/fly/1.jpg",
         about: "Just fly gui",
         data: "20.04.2023",
         universal: "true",
@@ -126,12 +149,13 @@ const scriptsData = [
         executors: "false",
         vhub: "false",
         keysystem: "false",
+        ads: "false",
         script: "loadstring('\108\111\97\100\115\116\114\105\110\103\40\103\97\109\101\58\72\116\116\112\71\101\116\40\40\39\104\116\116\112\115\58\47\47\103\105\115\116\46\103\105\116\104\117\98\117\115\101\114\99\111\110\116\101\110\116\46\99\111\109\47\109\101\111\122\111\110\101\89\84\47\98\102\48\51\55\100\102\102\57\102\48\97\55\48\48\49\55\51\48\52\100\100\100\54\55\102\100\99\100\51\55\48\47\114\97\119\47\101\49\52\101\55\52\102\52\50\53\98\48\54\48\100\102\53\50\51\51\52\51\99\102\51\48\98\55\56\55\48\55\52\101\98\51\99\53\100\50\47\97\114\99\101\117\115\37\50\53\50\48\120\37\50\53\50\48\102\108\121\37\50\53\50\48\50\37\50\53\50\48\111\98\102\108\117\99\97\116\111\114\39\41\44\116\114\117\101\41\41\40\41\10\10')()",
         url: ""
     },
     {
         name: "Crown Softworks | Hub",
-        image: "csh/1.png",
+        image: "assets/csh/1.png",
         about: "Support Deadline, Flick, Recoil, Evade, Bite by night",
         data: "24.04.2026 ",
         universal: "true",
@@ -139,6 +163,7 @@ const scriptsData = [
         executors: "false",
         vhub: "false",
         keysystem: "true",
+        ads: "false",
         script: "loadstring(game:HttpGet('https://raw.githubusercontent.com/ExclusiveVersionGithubIsLoaded/CrownSoftworks/refs/heads/main/link'))()",
         url: ""
     },
@@ -152,6 +177,7 @@ const scriptsData = [
         executors: "false",
         vhub: "false",
         keysystem: "false",
+        ads: "false",
         script: "loadstring(game:HttpGet('https://raw.githubusercontent.com/Luigi4k85/Arsenal-v5.3/refs/heads/main/Arsenal%20v5.3'))()",
         url: ""
     },
@@ -165,12 +191,13 @@ const scriptsData = [
         executors: "false",
         vhub: "false",
         keysystem: "true",
+        ads: "false",
         script: "loadstring(game:HttpGet('https://raw.githubusercontent.com/DmitriyGnatyk/bx_public/refs/heads/main/1.lua'))()",
         url: ""
     },
     {
         name: "Blox Fruits",
-        image: "1BF/1.png",
+        image: "assets/1BF/1.png",
         about: "Auto eggs, fruits, levels, chests, berries, bounty, fish, sea events and more",
         data: "11.04.2026",
         universal: "false",
@@ -178,12 +205,13 @@ const scriptsData = [
         executors: "false",
         vhub: "false",
         keysystem: "true",
+        ads: "false",
         script: "loadstring(game:HttpGet('https://raw.githubusercontent.com/Huylovemy/Bearhudz/refs/heads/main/Bearhud.lua'))()",
         url: ""
     },
     {
         name: "Lumber Tycoon 2",
-        image: "1lt2/1.jpg",
+        image: "assets/1lt2/1.jpg",
         about: "Get Tree, Teleports, Player Features",
         data: "27.10.2024",
         universal: "false",
@@ -191,6 +219,7 @@ const scriptsData = [
         executors: "false",
         vhub: "false",
         keysystem: "false",
+        ads: "false",
         script: "loadstring(game:HttpGet('https://raw.githubusercontent.com/DevKron/Kron_Hub/refs/heads/main/version_1.0'))",
         url: ""
     },
@@ -204,6 +233,7 @@ const scriptsData = [
         executors: "false",
         vhub: "false",
         keysystem: "false",
+        ads: "false",
         script: "loadstring(game:HttpGet(('https://pastebin.com/raw/uPrFkC6t')))()",
         url: ""
     },
@@ -217,6 +247,7 @@ const scriptsData = [
         executors: "false",
         vhub: "false",
         keysystem: "false",
+        ads: "false",
         script: "loadstring(game.HttpGet(game, 'https://raw.githubusercontent.com/zuhnosu/roblox-scripts/main/linsher/specter2.lua', true))()",
         url: ""
     },
@@ -230,6 +261,7 @@ const scriptsData = [
         executors: "false",
         vhub: "false",
         keysystem: "true",
+        ads: "false",
         script: "loadstring(game:HttpGet('https://raw.githubusercontent.com/Scriptztyz/robloxscript/main/Teach_Hub'))()",
         url: ""
     },
@@ -243,6 +275,7 @@ const scriptsData = [
         executors: "false",
         vhub: "false",
         keysystem: "false",
+        ads: "false",
         script: "loadstring(game:HttpGet('https://api.luarmor.net/files/v3/loaders/2529a5f9dfddd5523ca4e22f21cceffa.lua'))()",
         url: ""
     },
@@ -256,6 +289,7 @@ const scriptsData = [
         executors: "false",
         vhub: "false",
         keysystem: "false",
+        ads: "false",
         script: "loadstring(game:HttpGet('https://raw.githubusercontent.com/PawsThePaw/Plutonium.AA/refs/heads/main/Versions%202/V3.7.2.txt', true))()",
         url: ""
     },
@@ -269,6 +303,7 @@ const scriptsData = [
         executors: "false",
         vhub: "false",
         keysystem: "false",
+        ads: "false",
         script: "loadstring(game:HttpGet('https://gitlab.com/madsbrriinckbastholm/team-skeet/-/raw/main/Legends-Of-Speed'))()",
         url: ""
     },
@@ -282,6 +317,7 @@ const scriptsData = [
         executors: "false",
         vhub: "false",
         keysystem: "true",
+        ads: "false",
         script: "loadstring(game:HttpGet(('https://raw.githubusercontent.com/BaconBABA/T-HUB/main/Main'),true))()",
         url: ""
     },
@@ -292,9 +328,11 @@ const scriptsData = [
         data: "09.05.2023",
         universal: "true",
         verificate: "false",
+        unverif: "true",
         executors: "false",
         vhub: "false",
         keysystem: "false",
+        ads: "false",
         script: "loadstring(game:HttpGet('https://raw.githubusercontent.com/Podroka626/Scripts/main/Universal'))()",
         url: ""
     },
@@ -308,12 +346,13 @@ const scriptsData = [
         executors: "false",
         vhub: "false",
         keysystem: "true",
+        ads: "false",
         script: "loadstring(game:HttpGet('https://raw.githubusercontent.com/TakeModzz/Games-HUB-Destroyer-V4/main/Games%20HUB%20Destroyer%20V4'))()",
         url: ""
     },
     {
         name: "Vanish Hub",
-        image: "vanhub/1.png",
+        image: "assets/vanhub/1.png",
         about: "ESP AIM Anti-AIM WORLD-HACK",
         data: "28.02.2026",
         universal: "true",
@@ -321,9 +360,10 @@ const scriptsData = [
         executors: "false",
         vhub: "false",
         keysystem: "false",
+        ads: "false",
         script: "loadstring(game:HttpGet('https://raw.githubusercontent.com/Gregory909/scripts/refs/heads/main/Universal.lua'))()",
         url: ""
-    },
+    }
 //    {
 //        name: "",
 //        image: "../assets/1.png",

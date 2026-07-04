@@ -464,6 +464,19 @@
                 url: "https://solara.gg"
             },
             {
+                name: "Velocity",
+                image: "../scripts/executors/velic.png",
+                about: "Velocity - free verified executor",
+                data: "Undetect",
+                verificate: "true",
+                free: "true",
+                paid: "false",
+                vhub: "false",
+                keysystem: "false",
+                android: "false",
+                url: "https://discord.gg/velocityide"
+            },
+            {
                 name: "Madium",
                 image: "../scripts/executors/madium.png",
                 about: "New good and powerful executor",
@@ -490,10 +503,23 @@
                 url: "https://discord.gg/codexlol"
             },
             {
-                name: "ScriptWare",
-                image: "../scripts/executors/1.png",
-                about: "ScriptWare - powerful paid executor with great stability",
+                name: "Cryptic",
+                image: "../scripts/executors/cryptic.png",
+                about: "Good android executor",
                 data: "Undetect",
+                verificate: "true",
+                free: "false",
+                paid: "false",
+                vhub: "false",
+                keysystem: "true",
+                android: "true",
+                url: "https://crypticexecutor.com/"
+            },
+            {
+                name: "ScriptWare",
+                image: "../scripts/executors/sw.png",
+                about: "ScriptWare - powerful paid executor with great stability",
+                data: "Detect",
                 verificate: "false",
                 free: "false",
                 paid: "true",
@@ -503,9 +529,74 @@
                 url: "https://script-ware.com"
             },
             {
-                name: "Krnl",
+                name: "JJSploit",
                 image: "../scripts/executors/1.png",
-                about: "Krnl - legendary free executor",
+                about: "Old but working executor",
+                data: "Undetect",
+                verificate: "false",
+                free: "true",
+                paid: "false",
+                vhub: "false",
+                keysystem: "false",
+                android: "false",
+                url: "https://jjsploit.net/"
+            },
+            {
+                name: "Luna",
+                image: "../scripts/executors/luna.png",
+                about: "Fast, keyless Roblox script executor for PC and mobile",
+                data: "Undetect",
+                verificate: "false",
+                free: "true",
+                paid: "falde",
+                vhub: "false",
+                keysystem: "false",
+                android: "true",
+                url: "https://lunaexec.com/"
+            },
+            {
+                name: "TrigonEVO",
+                image: "../scripts/executors/trigon.png",
+                about: "Windows and android",
+                data: "Undetect",
+                verificate: "false",
+                free: "false",
+                paid: "false",
+                vhub: "false",
+                keysystem: "true",
+                android: "true",
+                url: "https://trigonevo.com/"
+            },
+            {
+                name: "ArceusX",
+                image: "../scripts/executors/arceus.png",
+                about: "Powerful Roblox executor for Android and iOS",
+                data: "Undetect",
+                verificate: "true",
+                free: "false",
+                paid: "false",
+                vhub: "false",
+                keysystem: "true",
+                android: "true",
+                url: "https://arceusx.net/"
+            },
+            {
+                name: "VegaX",
+                image: "../scripts/executors/vegax.png",
+                about: "Android executor",
+                data: "Undetect",
+                verificate: "false",
+                free: "false",
+                paid: "false",
+                vhub: "false",
+                keysystem: "true",
+                android: "true",
+                url: "https://vegax.gg/"
+            },
+            {
+                name: "Cubix",
+                image: "../scripts/executors/cubix.png",
+                about: "Cubix is a keyless Roblox exploit that can downloaded and used on Android devices",
                 data: "Undetect",
                 verificate: "false",
                 free: "true",
@@ -513,8 +604,20 @@
                 vhub: "false",
                 keysystem: "false",
                 android: "true",
-                url: "https://krnl.place"
-            }
+                url: "https://cubixexecutor.com/"
+            },
+            {
+                name: "Nerve",
+               image: "../wallpaper.png",
+               about: "Nerve - free and keyless executor. Release date: early 2027",
+               data: "2027",
+               universal: "false",
+               verificate: "false",
+               executors: "true",
+               vhub: "false",
+               keysystem: "false",
+               url: ""
+            },
         ];
 
         const container = document.getElementById('executorsContainer');
@@ -598,7 +701,6 @@
                     `;
                 }
 
-                // Внутри функции renderExecutors, после других бейджей
                 if (executor.android === "true") {
                     badgesHtml += `<span class="badge badge-android">ANDROID</span>`;
                 }
@@ -635,12 +737,10 @@
             });
         }
 
-        // Search handler
         searchInput.addEventListener('input', (e) => {
             renderExecutors(e.target.value, currentFilter);
         });
 
-        // Filter tags handler
         filterTags.forEach(tag => {
             tag.addEventListener('click', () => {
                 filterTags.forEach(t => t.classList.remove('active'));
@@ -650,7 +750,6 @@
             });
         });
 
-        // Initial render
         renderExecutors('', 'all');
     </script>
 </body>
